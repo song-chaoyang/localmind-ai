@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 520" width="780" height="520">
+  <defs>
+    <linearGradient id="sidebarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#161b22"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="userBubble" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1f6feb"/>
+      <stop offset="100%" stop-color="#388bfd"/>
+    </linearGradient>
+  </defs>
+
+  <!-- macOS window chrome -->
+  <rect width="780" height="520" rx="10" fill="#0d1117"/>
+  <rect width="780" height="520" rx="10" fill="none" stroke="#30363d" stroke-width="1"/>
+  <!-- Title bar -->
+  <rect width="780" height="38" rx="10" fill="#161b22"/>
+  <rect y="28" width="780" height="10" fill="#161b22"/>
+  <!-- Traffic lights -->
+  <circle cx="20" cy="19" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="19" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="19" r="6" fill="#28c840"/>
+  <!-- Title -->
+  <text x="390" y="24" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#8b949e" text-anchor="middle">OpenMind - Chat</text>
+
+  <!-- Sidebar -->
+  <rect x="0" y="38" width="200" height="482" fill="url(#sidebarGrad)"/>
+  <line x1="200" y1="38" x2="200" y2="520" stroke="#30363d" stroke-width="1"/>
+
+  <!-- New Chat button -->
+  <rect x="12" y="50" width="176" height="34" rx="6" fill="#238636" opacity="0.15" stroke="#3fb950" stroke-width="1"/>
+  <text x="100" y="72" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="600" fill="#3fb950" text-anchor="middle">+ New Chat</text>
+
+  <!-- Chat history items -->
+  <g transform="translate(12, 100)">
+    <!-- Active chat -->
+    <rect x="0" y="0" width="176" height="38" rx="6" fill="#21262d"/>
+    <text x="12" y="16" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#f0f6fc" font-weight="600">AI Trends Discussion</text>
+    <text x="12" y="30" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">Llama 3 - 2 min ago</text>
+
+    <!-- Chat 2 -->
+    <rect x="0" y="46" width="176" height="38" rx="6" fill="transparent"/>
+    <text x="12" y="62" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Python Code Help</text>
+    <text x="12" y="76" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">Mistral - 1 hr ago</text>
+
+    <!-- Chat 3 -->
+    <rect x="0" y="92" width="176" height="38" rx="6" fill="transparent"/>
+    <text x="12" y="108" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#c9d1d9">Document Summary</text>
+    <text x="12" y="122" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">DeepSeek - Yesterday</text>
+  </g>
+
+  <!-- Sidebar bottom -->
+  <g transform="translate(12, 470)">
+    <rect x="0" y="0" width="176" height="34" rx="6" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <text x="12" y="22" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#8b949e">Settings</text>
+  </g>
+
+  <!-- Main chat area -->
+  <!-- Model selector bar -->
+  <rect x="200" y="38" width="580" height="40" fill="#161b22"/>
+  <line x1="200" y1="78" x2="780" y2="78" stroke="#30363d" stroke-width="1"/>
+  <text x="220" y="63" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#c9d1d9">Model:</text>
+  <rect x="270" y="46" width="130" height="26" rx="5" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="285" y="64" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#f0f6fc">Llama 3</text>
+  <text x="340" y="64" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e">8B</text>
+  <text x="385" y="64" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="green">&#9679; Connected</text>
+
+  <!-- User message -->
+  <g transform="translate(220, 95)">
+    <rect x="0" y="0" width="530" height="40" rx="10" fill="url(#userBubble)" opacity="0.15"/>
+    <rect x="0" y="0" width="530" height="40" rx="10" fill="none" stroke="#1f6feb" stroke-width="1" opacity="0.4"/>
+    <circle cx="20" cy="20" r="12" fill="#1f6feb" opacity="0.3"/>
+    <text x="20" y="24" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#58a6ff" text-anchor="middle">U</text>
+    <text x="42" y="25" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#f0f6fc">What are the latest trends in AI?</text>
+  </g>
+
+  <!-- AI response -->
+  <g transform="translate(220, 150)">
+    <circle cx="10" cy="10" r="12" fill="#bc8cff" opacity="0.2"/>
+    <text x="10" y="14" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#bc8cff" text-anchor="middle">AI</text>
+
+    <text x="32" y="14" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#f0f6fc" font-weight="600">Here are the key AI trends for 2025:</text>
+
+    <text x="32" y="42" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#c9d1d9">
+      <tspan x="32" dy="0" fill="#58a6ff">1.</tspan><tspan fill="#c9d1d9"> Multimodal AI - Models that understand text, images, audio</tspan>
+    </text>
+    <text x="32" y="62" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#c9d1d9">
+      <tspan x="32" dy="0" fill="#58a6ff">2.</tspan><tspan fill="#c9d1d9"> Small Language Models - Efficient models running locally</tspan>
+    </text>
+    <text x="32" y="82" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#c9d1d9">
+      <tspan x="32" dy="0" fill="#58a6ff">3.</tspan><tspan fill="#c9d1d9"> AI Agents - Autonomous systems for complex tasks</tspan>
+    </text>
+    <text x="32" y="102" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#c9d1d9">
+      <tspan x="32" dy="0" fill="#58a6ff">4.</tspan><tspan fill="#c9d1d9"> RAG - Retrieval Augmented Generation for accuracy</tspan>
+    </text>
+    <text x="32" y="122" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#c9d1d9">
+      <tspan x="32" dy="0" fill="#58a6ff">5.</tspan><tspan fill="#c9d1d9"> Open Source LLMs - Community-driven AI development</tspan>
+    </text>
+
+    <!-- Action buttons -->
+    <g transform="translate(32, 145)">
+      <rect x="0" y="0" width="60" height="24" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+      <text x="30" y="16" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Copy</text>
+      <rect x="68" y="0" width="60" height="24" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+      <text x="98" y="16" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Regenerate</text>
+      <rect x="136" y="0" width="50" height="24" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+      <text x="161" y="16" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Like</text>
+    </g>
+  </g>
+
+  <!-- Input area -->
+  <rect x="200" y="460" width="580" height="60" fill="#161b22"/>
+  <line x1="200" y1="460" x2="780" y2="460" stroke="#30363d" stroke-width="1"/>
+  <rect x="216" y="472" width="510" height="36" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="232" y="495" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#8b949e">Type a message...</text>
+  <!-- Send button -->
+  <rect x="736" y="472" width="32" height="36" rx="8" fill="#238636"/>
+  <text x="752" y="495" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="white" text-anchor="middle">&#10148;</text>
+  <!-- Attach button -->
+  <text x="224" y="495" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#8b949e">&#128206;</text>
+</svg>
