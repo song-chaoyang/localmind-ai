@@ -1,60 +1,81 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 350" width="780" height="350">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
   <defs>
-    <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#3fb950"/>
-      <stop offset="100%" stop-color="#58a6ff"/>
+    <linearGradient id="termGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0f0f23"/>
     </linearGradient>
   </defs>
-
+  <style>
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    @keyframes typeIn { from{width:0} to{width:100%} }
+    .cursor{animation:blink 1s step-end infinite}
+    .line1{opacity:0;animation:fadeIn 0.3s ease-out 0.3s forwards}
+    .line2{opacity:0;animation:fadeIn 0.3s ease-out 0.6s forwards}
+    .line3{opacity:0;animation:fadeIn 0.3s ease-out 0.9s forwards}
+    .line4{opacity:0;animation:fadeIn 0.3s ease-out 1.2s forwards}
+    .line5{opacity:0;animation:fadeIn 0.3s ease-out 1.5s forwards}
+    .line6{opacity:0;animation:fadeIn 0.3s ease-out 1.8s forwards}
+    .line7{opacity:0;animation:fadeIn 0.3s ease-out 2.1s forwards}
+    .line8{opacity:0;animation:fadeIn 0.3s ease-out 2.4s forwards}
+    @keyframes fadeIn { to{opacity:1} }
+  </style>
+  <rect width="800" height="400" fill="#0f0f23" rx="12"/>
   <!-- Terminal window -->
-  <rect width="780" height="350" rx="10" fill="#0a0e14"/>
-  <rect width="780" height="350" rx="10" fill="none" stroke="#30363d" stroke-width="1"/>
-
-  <!-- Title bar -->
-  <rect width="780" height="38" rx="10" fill="#161b22"/>
-  <rect y="28" width="780" height="10" fill="#161b22"/>
-  <circle cx="20" cy="19" r="6" fill="#ff5f57"/>
-  <circle cx="40" cy="19" r="6" fill="#febc2e"/>
-  <circle cx="60" cy="19" r="6" fill="#28c840"/>
-  <text x="390" y="24" font-family="'SF Mono', 'Fira Code', monospace" font-size="12" fill="#8b949e" text-anchor="middle">bash - 80x24</text>
-
+  <rect x="40" y="30" width="720" height="340" rx="12" fill="url(#termGrad)" stroke="#2d2d5e" stroke-width="1.5"/>
+  <!-- Title bar (Mac style) -->
+  <rect x="40" y="30" width="720" height="36" rx="12" fill="#16162e"/>
+  <rect x="40" y="54" width="720" height="12" fill="#16162e"/>
+  <!-- Traffic lights -->
+  <circle cx="68" cy="48" r="7" fill="#ff5f57"/>
+  <circle cx="90" cy="48" r="7" fill="#febc2e"/>
+  <circle cx="112" cy="48" r="7" fill="#28c840"/>
+  <!-- Terminal title -->
+  <text x="400" y="53" text-anchor="middle" font-family="'SF Mono','Fira Code',monospace" font-size="12" fill="#6b7280">bash -- nexusmind</text>
   <!-- Terminal content -->
-  <g font-family="'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace" font-size="13">
-    <!-- Command 1: pip install -->
-    <text x="20" y="65" fill="#3fb950">$</text>
-    <text x="35" y="65" fill="#f0f6fc"> pip install openmind</text>
-
-    <!-- Install output -->
-    <text x="20" y="88" fill="#8b949e">Collecting openmind</text>
-    <text x="20" y="108" fill="#8b949e">  Downloading openmind-2.1.0-py3-none-any.whl (12.4 MB)</text>
-    <text x="20" y="128" fill="#8b949e">Installing collected packages: openmind</text>
-    <text x="20" y="148" fill="#3fb950">Successfully installed openmind-2.1.0</text>
-
-    <!-- Command 2: run -->
-    <text x="20" y="178" fill="#3fb950">$</text>
-    <text x="35" y="178" fill="#f0f6fc"> openmind --model llama3</text>
-
-    <!-- Model download -->
-    <text x="20" y="201" fill="#8b949e">Downloading model: meta-llama/Llama-3-8B-Instruct</text>
-
-    <!-- Progress bar -->
-    <rect x="20" y="213" width="500" height="14" rx="3" fill="#21262d"/>
-    <rect x="20" y="213" width="475" height="14" rx="3" fill="url(#progressGrad)"/>
-    <text x="270" y="224" font-size="10" fill="#0d1117" text-anchor="middle" font-weight="bold">95% | 4.28 GB / 4.50 GB</text>
-
-    <!-- Loading model -->
-    <text x="20" y="248" fill="#8b949e">Loading model into memory...</text>
-    <text x="20" y="268" fill="#8b949e">Initializing RAG engine...</text>
-    <text x="20" y="288" fill="#8b949e">Starting web server...</text>
-
-    <!-- Success -->
-    <text x="20" y="318" fill="#3fb950" font-size="14" font-weight="bold">&#10003; OpenMind is running at </text>
-    <text x="310" y="318" fill="#58a6ff" font-size="14" font-weight="bold" text-decoration="underline">http://localhost:3000</text>
-
-    <!-- Blinking cursor -->
-    <rect x="20" y="332" width="8" height="16" fill="#f0f6fc">
-      <animate attributeName="opacity" values="1;1;0;0" dur="1.2s" repeatCount="indefinite"/>
-    </rect>
+  <!-- Line 1: pip install -->
+  <g class="line1">
+    <text x="70" y="95" font-family="'SF Mono','Fira Code',monospace" font-size="14" fill="#6b7280">$</text>
+    <text x="90" y="95" font-family="'SF Mono','Fira Code',monospace" font-size="14" fill="#e0e7ff"> pip install nexusmind</text>
   </g>
+  <!-- Line 2: nexusmind start -->
+  <g class="line2">
+    <text x="70" y="125" font-family="'SF Mono','Fira Code',monospace" font-size="14" fill="#6b7280">$</text>
+    <text x="90" y="125" font-family="'SF Mono','Fira Code',monospace" font-size="14" fill="#e0e7ff"> nexusmind start</text>
+  </g>
+  <!-- Line 3: Starting -->
+  <g class="line3">
+    <text x="70" y="160" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#c4b5fd">&#x1F9E0; NexusMind v0.1.0 starting...</text>
+  </g>
+  <!-- Line 4: Connected -->
+  <g class="line4">
+    <text x="70" y="190" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#22c55e">&#x2713;</text>
+    <text x="90" y="190" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#a5b4fc"> Connected to Ollama</text>
+    <text x="280" y="190" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#6b7280">(llama3, codellama, mistral)</text>
+  </g>
+  <!-- Line 5: Memory -->
+  <g class="line5">
+    <text x="70" y="220" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#22c55e">&#x2713;</text>
+    <text x="90" y="220" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#a5b4fc"> Memory system initialized</text>
+    <text x="320" y="220" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#6b7280">(47 memories loaded)</text>
+  </g>
+  <!-- Line 6: Skills -->
+  <g class="line6">
+    <text x="70" y="250" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#22c55e">&#x2713;</text>
+    <text x="90" y="250" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#a5b4fc"> 12 skills active, 3 scheduled tasks</text>
+  </g>
+  <!-- Line 7: Web UI -->
+  <g class="line7">
+    <text x="70" y="280" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#818cf8">&#x1F310; Web UI:</text>
+    <text x="160" y="280" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#22d3ee"> http://localhost:3000</text>
+  </g>
+  <!-- Line 8: Ready -->
+  <g class="line8">
+    <text x="70" y="315" font-family="'SF Mono','Fira Code',monospace" font-size="14" fill="#22c55e" font-weight="700">Ready.</text>
+    <text x="140" y="315" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#a5b4fc"> Start chatting at </text>
+    <text x="320" y="315" font-family="'SF Mono','Fira Code',monospace" font-size="13" fill="#22d3ee">http://localhost:3000</text>
+  </g>
+  <!-- Blinking cursor -->
+  <rect x="70" y="340" width="8" height="16" fill="#8b5cf6" class="cursor"/>
+  <!-- Prompt symbol -->
+  <text x="70" y="352" font-family="'SF Mono','Fira Code',monospace" font-size="14" fill="#6b7280" class="line8">$</text>
 </svg>

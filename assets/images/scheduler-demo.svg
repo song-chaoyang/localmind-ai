@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="schedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <style>
+    @keyframes spin { to{transform:rotate(360deg)} }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .spin{animation:spin 2s linear infinite;transform-origin:center}
+    .blink{animation:blink 1.5s ease-in-out infinite}
+  </style>
+  <rect width="900" height="500" fill="#0f0f23" rx="12"/>
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="22" font-weight="700" fill="url(#schedGrad)">Scheduled Tasks</text>
+  <line x1="320" y1="50" x2="580" y2="50" stroke="url(#schedGrad)" stroke-width="2" opacity="0.4"/>
+  <!-- Task Card 1 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="75" width="820" height="100" rx="12" fill="#13132b" stroke="#1e1b4b" stroke-width="1"/>
+  </g>
+  <!-- Status indicator -->
+  <circle cx="75" cy="105" r="8" fill="#22c55e" opacity="0.8"/>
+  <circle cx="75" cy="105" r="12" fill="none" stroke="#22c55e" stroke-width="1" opacity="0.3"/>
+  <!-- Task title -->
+  <text x="100" y="108" font-family="'Segoe UI',system-ui,sans-serif" font-size="16" font-weight="700" fill="#e0e7ff">Daily Standup Summary</text>
+  <text x="820" y="108" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#22c55e" font-weight="600">&#x2705; Active</text>
+  <!-- Task details -->
+  <text x="100" y="132" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Schedule:</text>
+  <text x="165" y="132" font-family="'SF Mono',monospace" font-size="12" fill="#a5b4fc">Every day at 9:00 AM</text>
+  <text x="100" y="152" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Next run:</text>
+  <text x="165" y="152" font-family="'SF Mono',monospace" font-size="12" fill="#c4b5fd">Tomorrow at 9:00 AM</text>
+  <text x="100" y="168" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Last run:</text>
+  <text x="165" y="168" font-family="'SF Mono',monospace" font-size="12" fill="#6b7280">Today at 9:00 AM (success)</text>
+  <!-- Progress bar -->
+  <rect x="560" y="145" width="280" height="6" rx="3" fill="#1e1b4b"/>
+  <rect x="560" y="145" width="280" height="6" rx="3" fill="#22c55e" opacity="0.6"/>
+  <text x="700" y="168" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">24/24 runs successful (100%)</text>
+  <!-- Task Card 2 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="190" width="820" height="100" rx="12" fill="#13132b" stroke="#1e1b4b" stroke-width="1"/>
+  </g>
+  <circle cx="75" cy="220" r="8" fill="#22c55e" opacity="0.8"/>
+  <circle cx="75" cy="220" r="12" fill="none" stroke="#22c55e" stroke-width="1" opacity="0.3"/>
+  <text x="100" y="223" font-family="'Segoe UI',system-ui,sans-serif" font-size="16" font-weight="700" fill="#e0e7ff">Weekly Code Review</text>
+  <text x="820" y="223" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#22c55e" font-weight="600">&#x2705; Active</text>
+  <text x="100" y="247" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Schedule:</text>
+  <text x="165" y="247" font-family="'SF Mono',monospace" font-size="12" fill="#a5b4fc">Every Monday at 10:00 AM</text>
+  <text x="100" y="267" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Next run:</text>
+  <text x="165" y="267" font-family="'SF Mono',monospace" font-size="12" fill="#c4b5fd">Monday at 10:00 AM</text>
+  <text x="100" y="283" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Last run:</text>
+  <text x="165" y="283" font-family="'SF Mono',monospace" font-size="12" fill="#6b7280">Last Monday (3 issues found)</text>
+  <rect x="560" y="260" width="280" height="6" rx="3" fill="#1e1b4b"/>
+  <rect x="560" y="260" width="258" height="6" rx="3" fill="#22c55e" opacity="0.6"/>
+  <text x="700" y="283" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">43/48 runs successful (89%)</text>
+  <!-- Task Card 3 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="305" width="820" height="100" rx="12" fill="#13132b" stroke="#7c3aed" stroke-width="1.5"/>
+  </g>
+  <!-- Running spinner -->
+  <g class="spin">
+    <circle cx="75" cy="335" r="10" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="15,10" opacity="0.8"/>
+  </g>
+  <circle cx="75" cy="335" r="4" fill="#8b5cf6"/>
+  <text x="100" y="338" font-family="'Segoe UI',system-ui,sans-serif" font-size="16" font-weight="700" fill="#e0e7ff">PR Monitor</text>
+  <text x="820" y="338" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#8b5cf6" font-weight="600" class="blink">&#x1F504; Running</text>
+  <text x="100" y="362" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Schedule:</text>
+  <text x="165" y="362" font-family="'SF Mono',monospace" font-size="12" fill="#a5b4fc">Every 30 minutes</text>
+  <text x="100" y="382" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Next run:</text>
+  <text x="165" y="382" font-family="'SF Mono',monospace" font-size="12" fill="#fbbf24">in 12 minutes</text>
+  <text x="100" y="398" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Watching:</text>
+  <text x="165" y="398" font-family="'SF Mono',monospace" font-size="12" fill="#6b7280">3 repositories, 12 open PRs</text>
+  <rect x="560" y="375" width="280" height="6" rx="3" fill="#1e1b4b"/>
+  <rect x="560" y="375" width="270" height="6" rx="3" fill="#8b5cf6" opacity="0.6"/>
+  <text x="700" y="398" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">1,247 checks completed</text>
+  <!-- Notification channels -->
+  <rect x="40" y="425" width="820" height="55" rx="10" fill="#1a1a3e" stroke="#1e1b4b" stroke-width="1"/>
+  <text x="60" y="450" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" font-weight="600" fill="#a5b4fc">Notification Channels:</text>
+  <!-- Telegram -->
+  <rect x="230" y="435" width="120" height="32" rx="8" fill="#1e1b4b" stroke="#22c55e" stroke-width="1"/>
+  <circle cx="252" cy="451" r="6" fill="#22c55e"/>
+  <text x="268" y="456" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#c4b5fd">Telegram</text>
+  <!-- Discord -->
+  <rect x="370" y="435" width="120" height="32" rx="8" fill="#1e1b4b" stroke="#22c55e" stroke-width="1"/>
+  <circle cx="392" cy="451" r="6" fill="#22c55e"/>
+  <text x="408" y="456" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#c4b5fd">Discord</text>
+  <!-- Slack -->
+  <rect x="510" y="435" width="120" height="32" rx="8" fill="#1e1b4b" stroke="#4b5563" stroke-width="1"/>
+  <circle cx="532" cy="451" r="6" fill="#4b5563"/>
+  <text x="548" y="456" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Slack</text>
+  <!-- Webhook -->
+  <rect x="650" y="435" width="120" height="32" rx="8" fill="#1e1b4b" stroke="#4b5563" stroke-width="1"/>
+  <circle cx="672" cy="451" r="6" fill="#4b5563"/>
+  <text x="688" y="456" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#6b7280">Webhook</text>
+</svg>

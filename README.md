@@ -1,366 +1,340 @@
-# OpenMind
-
 <div align="center">
 
-<img src="assets/images/hero-logo.svg" alt="OpenMind" width="700">
+<img src="assets/images/hero-logo.svg" alt="NexusMind Logo" width="120"/>
 
-**Free ChatGPT + Claude + Gemini. Run locally. No GPU needed. One click.**
+# NexusMind
 
-[![PyPI version](https://img.shields.io/pypi/v/openmind.svg)](https://pypi.org/project/openmind/)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/badge/downloads-1M+-brightgreen.svg)]()
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+**Your Second Brain. Always Online. Self-Evolving.**
 
-[English](README.md) | [中文](README_zh.md)
+The open-source AI assistant that remembers everything, learns from every interaction, and works while you sleep.
 
-[💬 Discord](https://discord.gg/openmind) · [🚀 Getting Started](#-get-started-in-60-seconds) · [📖 Documentation](docs/)
+<img src="assets/images/install-demo.svg" alt="Install Demo" width="600"/>
 
-</div>
+`pip install nexusmind && nexusmind`
+
+![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+![Self-Hosted](https://img.shields.io/badge/Deploy-Self_Hosted-9cf?logo=linux&logoColor=white)
+![Multi-Provider](https://img.shields.io/badge/LLM-Multi_Provider-orange)
+![No GPU Required](https://img.shields.io/badge/GPU-Not_Required-success)
 
 ---
 
-## 🎬 See it in action
-
-<div align="center">
-
-<img src="assets/images/demo-screenshot.svg" alt="OpenMind Demo" width="700">
+<img src="assets/images/feature-grid.svg" alt="Feature Grid" width="700"/>
 
 </div>
 
-## ✨ Why OpenMind?
+## Why NexusMind?
 
-| | ChatGPT | Claude | Gemini | **OpenMind** |
-|---|---------|--------|--------|-------------|
-| **Price** | $20/month | $20/month | $20/month | **Free forever** |
-| **Privacy** | ❌ Data uploaded | ❌ Data uploaded | ❌ Data uploaded | **✅ 100% local** |
-| **Offline** | ❌ | ❌ | ❌ | **✅ Works offline** |
-| **Multi-model** | GPT only | Claude only | Gemini only | **✅ All models** |
-| **Customizable** | ❌ | ❌ | ❌ | **✅ Fully open source** |
-| **No account** | ❌ Required | ❌ Required | ❌ Required | **✅ Zero signup** |
-| **Your data** | Their servers | Their servers | Their servers | **✅ Your machine** |
+Every AI assistant resets when you close the tab. **NexusMind doesn't.**
+
+### The Problem
+
+- ChatGPT forgets your project context every session
+- Claude Code doesn't remember your coding patterns
+- No AI tool learns from your repeated workflows
+- You can't schedule AI tasks to run while you're away
+
+### The Solution
+
+**NexusMind combines the best ideas from [Hermes Agent](https://github.com/NousResearch/hermes-agent) and [Claw Code](https://github.com/ultraworkers/claw-code):**
+
+| Feature | Hermes Agent | Claw Code | **NexusMind** |
+|---------|:------------:|:---------:|:-------------:|
+| Persistent Memory | :white_check_mark: | :x: | :white_check_mark: |
+| Auto Skill Evolution | :white_check_mark: | :x: | :white_check_mark: |
+| Offline Scheduling | :white_check_mark: | :x: | :white_check_mark: |
+| Multi-Agent System | :x: | :white_check_mark: | :white_check_mark: |
+| Multi-Provider LLM | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Beautiful Web UI | :white_check_mark: | :x: | :white_check_mark: |
+| Zero Config Setup | :x: | :x: | :white_check_mark: |
+| Self-Hosted | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+
+> **One line summary:** NexusMind is the only open-source AI assistant that gives you persistent memory, self-evolving skills, offline scheduling, AND multi-agent collaboration -- all in a single, beautiful, self-hosted package.
 
 ---
 
-## 🚀 Get Started in 60 Seconds
+## Key Features
 
-### Option 1: One-line install (Recommended)
+### Persistent Memory
+
+<img src="assets/images/memory-system.svg" alt="Memory System" width="500" align="right"/>
+
+NexusMind remembers everything about you and your projects:
+
+- Your tech stack, coding style, and preferences
+- Project context across sessions
+- Auto-extracted entities (people, projects, technologies)
+- Semantic search through all memories
+
+<br clear="right"/>
+
+### Auto Skill Evolution
+
+<img src="assets/images/skill-evolution.svg" alt="Skill Evolution" width="500" align="right"/>
+
+NexusMind learns from every interaction:
+
+- Detects repeated patterns in your workflow
+- Auto-creates reusable skills
+- Skills improve with usage (tracks success rate)
+- Export/import skills between instances
+- Generate your **"Skill DNA"** fingerprint
+
+<br clear="right"/>
+
+### Sleep Mode Agent
+
+<img src="assets/images/scheduler-demo.svg" alt="Scheduler Demo" width="500" align="right"/>
+
+Schedule tasks that run while you sleep:
+
+- "Review my PRs every morning at 9 AM"
+- "Run test suite every 30 minutes"
+- "Send weekly summary every Friday"
+- Results delivered to Telegram, Discord, or Slack
+
+<br clear="right"/>
+
+### Multi-Agent Collaboration
+
+<img src="assets/images/multi-agent.svg" alt="Multi-Agent System" width="500" align="right"/>
+
+Specialized agents working together:
+
+- **Coder Agent** -- Code generation, review, debugging
+- **Research Agent** -- Documentation, web research
+- **Data Agent** -- Analysis, visualization
+- All agents share the same memory system
+
+<br clear="right"/>
+
+### Multi-Provider Support
+
+Connect to any LLM provider:
+
+| Provider | Models | Cost | GPU Required |
+|----------|--------|------|:------------:|
+| **Ollama** | Llama 3, Mistral, Qwen, Phi | Free | :x: |
+| **OpenAI** | GPT-4, GPT-4o | Paid | :x: |
+| **Anthropic** | Claude 3.5, Claude Opus | Paid | :x: |
+| **OpenRouter** | 100+ models | Varies | :x: |
+
+Switch providers with a single command -- no code changes needed.
+
+---
+
+## Quick Start
+
+### Prerequisites
+
+- Python 3.10 or higher
+- One LLM provider (Ollama for free local inference, or an API key for cloud providers)
+
+### Install
 
 ```bash
-pip install openmind && openmind
+pip install nexusmind
 ```
 
-That's it. OpenMind will:
-1. ✅ Download a default model automatically
-2. ✅ Launch a beautiful chat interface
-3. ✅ Open in your browser at `http://localhost:3000`
-
-### Option 2: With a specific model
+### Start with Ollama (Free & Local, No GPU)
 
 ```bash
-# Use Llama 3 (recommended for most computers)
-openmind --model llama3
+# 1. Install Ollama: https://ollama.ai
+# 2. Pull a model
+ollama pull llama3
 
-# Use Mistral (lighter, faster)
-openmind --model mistral
-
-# Use DeepSeek Coder (best for coding)
-openmind --model deepseek-coder
+# 3. Launch NexusMind
+nexusmind start
 ```
 
-### Option 3: Clone from source
+### Start with OpenAI
 
 ```bash
-git clone https://github.com/song-chaoyang/localmind-ai.git
-cd localmind-ai
-pip install -e .
-openmind
+export OPENAI_API_KEY=sk-...
+nexusmind start --provider openai --model gpt-4o
 ```
 
-<div align="center">
-
-<img src="assets/images/install-demo.svg" alt="Install Demo" width="700">
-
-</div>
-
-> 💡 **No Ollama needed.** OpenMind bundles everything. Just install and run.
-
----
-
-## 🖥️ Beautiful Interface
-
-OpenMind comes with a modern, responsive web UI that works on any device.
-
-<div align="center">
-
-<img src="assets/images/ui-chat.svg" alt="Chat Interface" width="700">
-
-</div>
-
-### Features you'll love
-
-- 💬 **Real-time streaming** — Watch responses appear word by word
-- 🌙 **Dark / Light mode** — Easy on your eyes, day or night
-- 📱 **Mobile responsive** — Use on phone, tablet, or desktop
-- 📂 **File upload** — Drag & drop documents, images, code files
-- 🔍 **Search history** — Find any past conversation instantly
-- 🎨 **Markdown rendering** — Beautiful code blocks, tables, and math
-- ⌨️ **Keyboard shortcuts** — Power user friendly
-
----
-
-## 🤖 Talk to Multiple AI Models
-
-Switch between models with one click. No API keys needed.
-
-<div align="center">
-
-<img src="assets/images/model-switcher.svg" alt="Model Switcher" width="700">
-
-</div>
-
-### Supported models (and growing)
-
-| Model | Size | RAM Needed | Best For |
-|-------|------|-----------|----------|
-| 🦙 **Llama 3** | 8B | 8GB | General chat |
-| 🌊 **Mistral** | 7B | 8GB | Fast responses |
-| 🐼 **DeepSeek** | 7B | 8GB | Coding & reasoning |
-| 🔮 **Qwen 2** | 7B | 8GB | Chinese & English |
-| 💎 **Phi-3** | 3.8B | 4GB | Lightweight tasks |
-| 🧠 **Gemma 2** | 9B | 8GB | Complex reasoning |
-| ⚡ **TinyLlama** | 1.1B | 2GB | Quick tasks |
-
-> 💡 **No GPU? No problem.** All models run on CPU. A modern laptop is enough.
-
----
-
-## 📄 RAG — Chat with Your Documents
-
-Upload any file and ask questions about it. Your documents never leave your machine.
-
-<div align="center">
-
-<img src="assets/images/rag-demo.svg" alt="RAG Demo" width="700">
-
-</div>
-
-### Supported formats
-- 📝 **Text**: `.txt`, `.md`, `.markdown`
-- 📊 **Data**: `.csv`, `.json`, `.xlsx`
-- 💻 **Code**: `.py`, `.js`, `.ts`, `.java`, `.go`, `.rs`, `.cpp`
-- 📄 **Documents**: `.pdf`, `.docx` (with extra dependencies)
-- 🌐 **Web**: Paste any URL to ingest a webpage
-
----
-
-## 🔌 Plugin Ecosystem
-
-Extend OpenMind with community plugins.
+### Start with Anthropic
 
 ```bash
-# Install plugins
-openmind plugin install web-search
-openmind plugin install code-interpreter
-openmind plugin install image-generator
-
-# List installed plugins
-openmind plugin list
+export ANTHROPIC_API_KEY=sk-ant-...
+nexusmind start --provider anthropic --model claude-opus-4-20250514
 ```
 
-### Popular plugins
-
-| Plugin | Description | ⭐ |
-|--------|-------------|---|
-| 🔍 **web-search** | Search the web in real-time | 2.1k |
-| 💻 **code-interpreter** | Run Python code safely | 1.8k |
-| 🎨 **image-generator** | Generate images with Stable Diffusion | 1.5k |
-| 📊 **data-analyzer** | Analyze CSV/Excel files | 1.2k |
-| 🌐 **web-browser** | Browse websites autonomously | 980 |
-| 📧 **email-assistant** | Read and write emails | 750 |
+Open **http://localhost:3000** and start chatting!
 
 ---
 
-## 🏗️ Architecture
+## Documentation
 
-<div align="center">
-
-<img src="assets/images/architecture.svg" alt="Architecture" width="700">
-
-</div>
-
-OpenMind is built with simplicity and performance in mind:
-
-- **Backend**: Python + FastAPI (async, fast, lightweight)
-- **Model Runtime**: Embedded llama.cpp (no external dependencies)
-- **Frontend**: Vanilla HTML/CSS/JS (no build step, instant load)
-- **RAG**: Built-in embedding + vector search
-- **Storage**: SQLite (zero configuration)
-
-### Why this stack?
-
-| Concern | Our choice | Why |
-|---------|-----------|-----|
-| Dependencies | Minimal | `pip install openmind` just works |
-| Bundle size | ~50MB | No Node.js, no Docker, no heavy frameworks |
-| Startup time | < 3 seconds | No webpack, no compilation |
-| Memory usage | ~200MB base | Runs alongside models without issues |
-
----
-
-## 🛠️ For Developers
-
-### Use as a Python library
-
-```python
-from openmind import OpenMind
-
-# Initialize (downloads model on first run)
-mind = OpenMind(model="llama3")
-
-# Simple chat
-response = mind.chat("Explain quantum computing in simple terms")
-print(response)
-
-# Streaming
-for chunk in mind.chat_stream("Write a Python web scraper"):
-    print(chunk, end="", flush=True)
-
-# Chat with documents
-mind.ingest("report.pdf")
-answer = mind.chat("What are the key findings in the report?")
-
-# Switch models anytime
-mind.switch_model("mistral")
-response = mind.chat("Continue in French")
-```
-
-### API Server
+### CLI Commands
 
 ```bash
-# Start API server
-openmind serve --port 8080
-
-# Use from any language
-curl http://localhost:8080/api/v1/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "Hello!"}'
+nexusmind start            # Launch Web UI + API server
+nexusmind chat             # Interactive terminal chat
+nexusmind model list       # List available models
+nexusmind model pull       # Pull a model (Ollama)
+nexusmind memory search    # Search through memories
+nexusmind skill list       # List learned skills
+nexusmind skill export     # Export skills to JSON
+nexusmind skill import     # Import skills from JSON
+nexusmind schedule list    # List scheduled tasks
+nexusmind schedule add     # Add a new scheduled task
+nexusmind ingest <file>    # Ingest a document into memory
 ```
 
-### Build a plugin
-
-```python
-# my_plugin.py
-from openmind import Plugin
-
-class MyPlugin(Plugin):
-    name = "my-plugin"
-    
-    def on_message(self, message, context):
-        # Modify or enhance messages
-        return message
-    
-    def register_tools(self):
-        return [{
-            "name": "my_tool",
-            "description": "Does something useful",
-            "function": self.my_tool
-        }]
-    
-    def my_tool(self, query: str) -> str:
-        return f"Result: {query}"
-```
-
----
-
-## 📊 Project Stats
-
-<div align="center">
-
-<img src="assets/images/stats.svg" alt="Stats" width="700">
-
-</div>
-
-- 📦 **50MB** total install size
-- ⚡ **< 3s** cold start time
-- 💬 **60+ tokens/sec** on modern CPU
-- 🔌 **50+** community plugins
-- 🌍 **30+** language communities
-- 📥 **1M+** downloads
-
----
-
-## 🗺️ Roadmap
-
-### v0.1 (Current) — Foundation ✅
-- [x] One-click install & run
-- [x] Embedded model runtime (no Ollama needed)
-- [x] Beautiful web UI with streaming
-- [x] Multi-model support
-- [x] RAG with document upload
-- [x] Plugin system
-- [x] REST API
-- [x] CLI interface
-
-### v0.2 — Intelligence
-- [ ] AI Agent mode (autonomous task execution)
-- [ ] Multi-model routing (auto-select best model)
-- [ ] Conversation templates & personas
-- [ ] Voice input/output
-- [ ] Image understanding (vision models)
-
-### v0.3 — Desktop App
-- [ ] Native macOS app (.dmg)
-- [ ] Native Windows app (.exe)
-- [ ] Native Linux app (.AppImage)
-- [ ] System tray integration
-- [ ] Auto-update
-
-### v1.0 — Platform
-- [ ] Plugin marketplace
-- [ ] Team collaboration features
-- [ ] Model fine-tuning UI
-- [ ] Mobile apps (iOS/Android)
-
----
-
-## 🤝 Contributing
-
-Contributions of all kinds are welcome! Please read our [Contributing Guide](CONTRIBUTING.md).
-
-### Quick start
+### API Endpoints
 
 ```bash
-git clone https://github.com/song-chaoyang/localmind-ai.git
-cd localmind-ai
-pip install -e ".[dev]"
-pytest
-openmind
+# Chat
+POST   /api/v1/chat              # Send a message
+POST   /api/v1/chat/stream       # Stream response (SSE)
+
+# Models
+GET    /api/v1/models            # List available models
+GET    /api/v1/models/{id}       # Get model details
+
+# Memory
+GET    /api/v1/memory            # Browse memories
+POST   /api/v1/memory/search     # Semantic search
+DELETE /api/v1/memory/{id}       # Delete a memory
+
+# Skills
+GET    /api/v1/skills            # List learned skills
+GET    /api/v1/skills/{id}       # Get skill details
+POST   /api/v1/skills/export     # Export skills
+POST   /api/v1/skills/import     # Import skills
+
+# Scheduler
+GET    /api/v1/scheduler/tasks   # List scheduled tasks
+POST   /api/v1/scheduler/tasks   # Create a scheduled task
+DELETE /api/v1/scheduler/tasks/{id}  # Delete a task
+
+# Ingestion
+POST   /api/v1/ingest            # Ingest documents into memory
+```
+
+### Configuration
+
+NexusMind works out of the box with zero configuration. For advanced settings, create a `nexusmind.yaml` in your project root:
+
+```yaml
+provider:
+  name: ollama
+  model: llama3
+  base_url: http://localhost:11434
+
+memory:
+  max_memories: 10000
+  embedding_model: all-MiniLM-L6-v2
+
+scheduler:
+  enabled: true
+  timezone: UTC
+
+server:
+  host: 0.0.0.0
+  port: 3000
+
+notifications:
+  telegram:
+    bot_token: ""
+    chat_id: ""
+  discord:
+    webhook_url: ""
 ```
 
 ---
 
-## 🙏 Acknowledgments
+## Architecture
 
-- [llama.cpp](https://github.com/ggerganov/llama.cpp) — Lightning-fast LLM inference
-- [Ollama](https://github.com/ollama/ollama) — Inspiration for model management
-- [Open WebUI](https://github.com/open-webui/open-webui) — UI inspiration
-- [Hugging Face](https://huggingface.co/) — Open model community
+NexusMind is built with a modular, extensible architecture:
+
+```
+nexusmind/
+├── api/            # FastAPI server & WebSocket endpoints
+├── core/
+│   ├── engine.py       # Main orchestration engine
+│   ├── memory.py       # Persistent memory with vector search
+│   ├── skills.py       # Auto skill evolution system
+│   ├── scheduler.py    # Cron-based task scheduler
+│   ├── agents.py       # Multi-agent collaboration
+│   ├── providers.py    # LLM provider abstraction
+│   └── rag.py          # Retrieval-augmented generation
+├── static/         # Web UI (HTML/CSS/JS)
+├── utils/          # Shared utilities
+└── cli.py          # Command-line interface
+```
+
+**Key design decisions:**
+
+- **Provider-agnostic**: Swap any LLM without changing your code
+- **Memory-first**: Every interaction enriches the shared knowledge base
+- **Skill-driven**: Repeated patterns become reusable, improvable skills
+- **Event-sourced**: Full audit trail of all actions and decisions
 
 ---
 
-## 📜 License
+## Roadmap
 
-[MIT License](LICENSE) — Free for personal and commercial use.
+- [ ] Plugin system for custom agents
+- [ ] Voice input/output support
+- [ ] Mobile-responsive Web UI
+- [ ] Docker one-click deployment
+- [ ] Skill marketplace (share skills with the community)
+- [ ] Git integration (auto-commit, PR review)
+- [ ] MCP (Model Context Protocol) support
+
+---
+
+## Contributing
+
+We love contributions! Whether it's a bug fix, new feature, or documentation improvement.
+
+### Getting Started
+
+1. Fork the repository
+2. Clone your fork: `git clone https://github.com/your-username/nexusmind.git`
+3. Install dev dependencies: `pip install -e ".[dev]"`
+4. Run tests: `pytest tests/`
+5. Create a feature branch: `git checkout -b feature/my-feature`
+6. Commit and push: `git commit -m "Add my feature" && git push`
+7. Open a Pull Request
+
+### Code Style
+
+- Follow PEP 8
+- Add type hints to all functions
+- Write tests for new features
+- Keep PRs small and focused
+
+---
+
+## License
+
+This project is licensed under the **MIT License** -- free for personal and commercial use.
+
+See [LICENSE](LICENSE) for the full text.
+
+---
+
+## Inspiration
+
+NexusMind stands on the shoulders of giants:
+
+- [Hermes Agent](https://github.com/NousResearch/hermes-agent) -- Persistent memory and skill evolution concepts
+- [Claw Code](https://github.com/ultraworkers/claw-code) -- Autonomous multi-agent coding
+- [Open WebUI](https://github.com/open-webui/open-webui) -- Beautiful AI interface design
+- [MemGPT](https://github.com/cpacker/memgpt) -- Virtual context management
+- [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) -- Autonomous AI agent framework
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by the OpenMind Community**
+**Made with :heart: by the NexusMind Contributors**
 
-*"AI should be free, private, and accessible to everyone."*
-
-[⭐ Star us on GitHub](https://github.com/song-chaoyang/localmind-ai) — It takes just one click!
+If you find this useful, please consider giving it a :star:!
 
 </div>

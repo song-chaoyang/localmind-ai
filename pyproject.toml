@@ -1,20 +1,21 @@
 [build-system]
-requires = ["setuptools>=68.0", "wheel"]
-build-backend = "setuptools.backends._legacy:_Backend"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
-name = "openmind"
+name = "nexusmind"
 version = "0.1.0"
-description = "Free ChatGPT + Claude + Gemini. Run locally. No GPU needed. One click."
+description = "AI agent with persistent memory, auto skill evolution, offline scheduling, and multi-provider LLM support"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 requires-python = ">=3.10"
-authors = [{name = "OpenMind Contributors"}]
-keywords = ["ai", "llm", "local-ai", "chat", "privacy", "open-source", "ollama", "free"]
+authors = [
+    { name = "NexusMind Team" },
+]
+keywords = ["ai", "agent", "llm", "memory", "scheduling", "multi-provider"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "Intended Audience :: End Users/Desktop",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -24,31 +25,42 @@ classifiers = [
 ]
 
 dependencies = [
-    "httpx>=0.25.0",
+    "httpx>=0.27.0",
+    "rich>=13.0.0",
+    "click>=8.1.0",
 ]
 
 [project.optional-dependencies]
-api = ["fastapi>=0.104.0", "uvicorn[standard]>=0.24.0", "pydantic>=2.5.0"]
-rag = ["sentence-transformers>=2.2.0"]
-dev = ["pytest>=7.4.0", "pytest-asyncio>=0.21.0", "ruff>=0.1.0", "mypy>=1.5.0"]
-all = ["openmind[api,rag,dev]"]
+api = [
+    "fastapi>=0.110.0",
+    "uvicorn>=0.29.0",
+    "sse-starlette>=2.0.0",
+]
+rag = [
+    "sentence-transformers>=2.6.0",
+]
+all = [
+    "nexusmind[api,rag]",
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.3.0",
+]
 
 [project.scripts]
-openmind = "openmind.cli:main"
+nexusmind = "nexusmind.cli:main"
 
-[project.urls]
-Homepage = "https://github.com/song-chaoyang/localmind-ai"
-Documentation = "https://github.com/song-chaoyang/localmind-ai#readme"
-Repository = "https://github.com/song-chaoyang/localmind-ai"
-Issues = "https://github.com/song-chaoyang/localmind-ai/issues"
-
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.hatch.build.targets.wheel]
+packages = ["src/nexusmind"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
 asyncio_mode = "auto"
+testpaths = ["tests"]
 
 [tool.ruff]
-line-length = 100
 target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]

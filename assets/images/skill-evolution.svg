@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="skillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <style>
+    @keyframes fillBar { from{width:0} to{width:100%} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes pulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+    .step{animation:fadeInUp 0.5s ease-out both}
+    .step1{animation-delay:0.2s}
+    .step2{animation-delay:0.6s}
+    .step3{animation-delay:1.0s}
+    .step4{animation-delay:1.4s}
+    .step5{animation-delay:1.8s}
+    .progress-fill{animation:fillBar 1.5s ease-out both}
+    .pulse{animation:pulse 2s ease-in-out infinite}
+  </style>
+  <rect width="900" height="500" fill="#0f0f23" rx="12"/>
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="22" font-weight="700" fill="url(#skillGrad)">Skill Evolution Pipeline</text>
+  <line x1="300" y1="50" x2="600" y2="50" stroke="url(#skillGrad)" stroke-width="2" opacity="0.4"/>
+  <!-- Timeline line -->
+  <line x1="80" y1="120" x2="820" y2="120" stroke="#312e81" stroke-width="2"/>
+  <!-- Step 1 -->
+  <g class="step step1">
+    <circle cx="130" cy="120" r="18" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+    <text x="130" y="125" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="700" fill="#818cf8">1</text>
+    <rect x="60" y="150" width="140" height="70" rx="8" fill="#1e1b4b" stroke="#4338ca" stroke-width="1"/>
+    <text x="130" y="172" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#a5b4fc">You solve</text>
+    <text x="130" y="188" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#a5b4fc">a problem</text>
+    <text x="130" y="208" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">manually</text>
+  </g>
+  <!-- Arrow 1-2 -->
+  <line x1="200" y1="120" x2="260" y2="120" stroke="#6366f1" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="258,115 268,120 258,125" fill="#6366f1"/>
+  <!-- Step 2 -->
+  <g class="step step2">
+    <circle cx="310" cy="120" r="18" fill="#1e1b4b" stroke="#7c3aed" stroke-width="2"/>
+    <text x="310" y="125" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="700" fill="#a78bfa">2</text>
+    <rect x="240" y="150" width="140" height="70" rx="8" fill="#1e1b4b" stroke="#6d28d9" stroke-width="1"/>
+    <text x="310" y="172" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">NexusMind</text>
+    <text x="310" y="188" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">observes</text>
+    <text x="310" y="208" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">the pattern</text>
+  </g>
+  <!-- Arrow 2-3 -->
+  <line x1="380" y1="120" x2="440" y2="120" stroke="#7c3aed" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="438,115 448,120 438,125" fill="#7c3aed"/>
+  <!-- Step 3 -->
+  <g class="step step3">
+    <circle cx="490" cy="120" r="18" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="490" y="125" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="700" fill="#c084fc">3</text>
+    <rect x="420" y="150" width="140" height="70" rx="8" fill="#1e1b4b" stroke="#7c3aed" stroke-width="1"/>
+    <text x="490" y="172" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#d8b4fe">Pattern</text>
+    <text x="490" y="188" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#d8b4fe">detected</text>
+    <text x="490" y="208" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#fbbf24">(3x repetition)</text>
+  </g>
+  <!-- Arrow 3-4 -->
+  <line x1="560" y1="120" x2="620" y2="120" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="618,115 628,120 618,125" fill="#8b5cf6"/>
+  <!-- Step 4 -->
+  <g class="step step4">
+    <circle cx="670" cy="120" r="18" fill="#1e1b4b" stroke="#a855f7" stroke-width="2"/>
+    <text x="670" y="125" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="700" fill="#d8b4fe">4</text>
+    <rect x="600" y="150" width="140" height="70" rx="8" fill="#1e1b4b" stroke="#9333ea" stroke-width="1"/>
+    <text x="670" y="172" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#e9d5ff">Skill</text>
+    <text x="670" y="188" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#e9d5ff">auto-created</text>
+    <text x="670" y="208" text-anchor="middle" font-family="'SF Mono',monospace" font-size="9" fill="#22c55e">'Django Debug Pro'</text>
+  </g>
+  <!-- Arrow 4-5 -->
+  <line x1="740" y1="120" x2="780" y2="120" stroke="#a855f7" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="778,115 788,120 778,125" fill="#a855f7"/>
+  <!-- Step 5 -->
+  <g class="step step5">
+    <circle cx="810" cy="120" r="18" fill="#1e1b4b" stroke="#c084fc" stroke-width="2"/>
+    <text x="810" y="125" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="700" fill="#f0abfc">5</text>
+    <rect x="740" y="150" width="140" height="70" rx="8" fill="#1e1b4b" stroke="#a855f7" stroke-width="1"/>
+    <text x="810" y="172" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#f5d0fe">Next time:</text>
+    <text x="810" y="188" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#22c55e">auto-applied!</text>
+    <text x="810" y="208" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">zero effort</text>
+  </g>
+  <!-- Stats section -->
+  <rect x="40" y="250" width="820" height="50" rx="10" fill="#1a1a3e" stroke="#1e1b4b" stroke-width="1"/>
+  <text x="170" y="280" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="18" font-weight="700" fill="#818cf8">47</text>
+  <text x="170" y="292" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">skills learned</text>
+  <line x1="290" y1="260" x2="290" y2="290" stroke="#1e1b4b" stroke-width="1"/>
+  <text x="400" y="280" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="18" font-weight="700" fill="#a78bfa">92%</text>
+  <text x="400" y="292" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">success rate</text>
+  <line x1="510" y1="260" x2="510" y2="290" stroke="#1e1b4b" stroke-width="1"/>
+  <text x="630" y="280" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="18" font-weight="700" fill="#c084fc">1,234</text>
+  <text x="630" y="292" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">total uses</text>
+  <line x1="730" y1="260" x2="730" y2="290" stroke="#1e1b4b" stroke-width="1"/>
+  <text x="810" y="280" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="18" font-weight="700" fill="#d8b4fe">12</text>
+  <text x="810" y="292" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">this week</text>
+  <!-- Skill cards -->
+  <text x="60" y="330" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="600" fill="#a5b4fc">Top Skills</text>
+  <!-- Card 1 -->
+  <rect x="40" y="345" width="260" height="60" rx="8" fill="#1e1b4b" stroke="#4338ca" stroke-width="1"/>
+  <text x="60" y="368" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#c4b5fd">Security Review</text>
+  <text x="270" y="368" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#22c55e">92% accuracy</text>
+  <rect x="60" y="380" width="220" height="6" rx="3" fill="#312e81"/>
+  <rect x="60" y="380" width="202" height="6" rx="3" fill="url(#progressGrad)" class="progress-fill"/>
+  <text x="60" y="398" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">Used 23 times</text>
+  <!-- Card 2 -->
+  <rect x="320" y="345" width="260" height="60" rx="8" fill="#1e1b4b" stroke="#6d28d9" stroke-width="1"/>
+  <text x="340" y="368" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#c4b5fd">Django Debug Pro</text>
+  <text x="550" y="368" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#22c55e">88% accuracy</text>
+  <rect x="340" y="380" width="220" height="6" rx="3" fill="#312e81"/>
+  <rect x="340" y="380" width="194" height="6" rx="3" fill="url(#progressGrad)" class="progress-fill" style="animation-delay:0.3s"/>
+  <text x="340" y="398" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">Used 18 times</text>
+  <!-- Card 3 -->
+  <rect x="600" y="345" width="260" height="60" rx="8" fill="#1e1b4b" stroke="#9333ea" stroke-width="1"/>
+  <text x="620" y="368" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#c4b5fd">API Design Helper</text>
+  <text x="830" y="368" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#22c55e">95% accuracy</text>
+  <rect x="620" y="380" width="220" height="6" rx="3" fill="#312e81"/>
+  <rect x="620" y="380" width="209" height="6" rx="3" fill="url(#progressGrad)" class="progress-fill" style="animation-delay:0.6s"/>
+  <text x="620" y="398" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">Used 31 times</text>
+  <!-- More cards row 2 -->
+  <rect x="40" y="420" width="260" height="60" rx="8" fill="#1e1b4b" stroke="#4338ca" stroke-width="1"/>
+  <text x="60" y="443" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#c4b5fd">Code Review Bot</text>
+  <text x="270" y="443" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#fbbf24">85% accuracy</text>
+  <rect x="60" y="455" width="220" height="6" rx="3" fill="#312e81"/>
+  <rect x="60" y="455" width="187" height="6" rx="3" fill="url(#progressGrad)" class="progress-fill" style="animation-delay:0.9s"/>
+  <text x="60" y="473" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">Used 15 times</text>
+  <rect x="320" y="420" width="260" height="60" rx="8" fill="#1e1b4b" stroke="#6d28d9" stroke-width="1"/>
+  <text x="340" y="443" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#c4b5fd">SQL Optimizer</text>
+  <text x="550" y="443" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#22c55e">90% accuracy</text>
+  <rect x="340" y="455" width="220" height="6" rx="3" fill="#312e81"/>
+  <rect x="340" y="455" width="198" height="6" rx="3" fill="url(#progressGrad)" class="progress-fill" style="animation-delay:1.2s"/>
+  <text x="340" y="473" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">Used 12 times</text>
+  <rect x="600" y="420" width="260" height="60" rx="8" fill="#1e1b4b" stroke="#9333ea" stroke-width="1"/>
+  <text x="620" y="443" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#c4b5fd">Test Generator</text>
+  <text x="830" y="443" text-anchor="end" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#22c55e">87% accuracy</text>
+  <rect x="620" y="455" width="220" height="6" rx="3" fill="#312e81"/>
+  <rect x="620" y="455" width="191" height="6" rx="3" fill="url(#progressGrad)" class="progress-fill" style="animation-delay:1.5s"/>
+  <text x="620" y="473" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#6b7280">Used 9 times</text>
+</svg>

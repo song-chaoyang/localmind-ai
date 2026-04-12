@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#818cf8"/>
+      <stop offset="100%" style="stop-color:#c084fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- Brain outline -->
+  <path d="M32 12c-4 0-7 2-8.5 5-.8-.5-1.8-.8-2.8-.8-3 0-5.5 2.5-5.5 5.5 0 .5.1 1 .2 1.5C13 24.5 11 27 11 30c0 3.5 2.5 6.4 5.8 7-.3.8-.5 1.6-.5 2.5 0 3.9 3.2 7 7 7 1.2 0 2.3-.3 3.3-.8C28 48.5 30 50 32.5 50c2.8 0 5.2-1.8 6-4.3.8.3 1.6.5 2.5.5 3.5 0 6.4-2.8 6.5-6.3 2.5-1.2 4.2-3.8 4.2-6.7 0-2.5-1.3-4.7-3.2-6 .2-.6.3-1.2.3-1.9 0-3.3-2.7-6-6-6-.3 0-.5 0-.8.1C41.5 16 37.5 12 32 12z" fill="none" stroke="url(#glow)" stroke-width="1.8" opacity="0.9"/>
+  <!-- Neural nodes -->
+  <circle cx="32" cy="28" r="3.5" fill="url(#glow)"/>
+  <circle cx="24" cy="22" r="2.5" fill="url(#glow)" opacity="0.8"/>
+  <circle cx="40" cy="22" r="2.5" fill="url(#glow)" opacity="0.8"/>
+  <circle cx="24" cy="34" r="2.5" fill="url(#glow)" opacity="0.8"/>
+  <circle cx="40" cy="34" r="2.5" fill="url(#glow)" opacity="0.8"/>
+  <circle cx="32" cy="40" r="2.5" fill="url(#glow)" opacity="0.8"/>
+  <circle cx="18" cy="28" r="2" fill="url(#glow)" opacity="0.6"/>
+  <circle cx="46" cy="28" r="2" fill="url(#glow)" opacity="0.6"/>
+  <!-- Connections -->
+  <line x1="32" y1="28" x2="24" y2="22" stroke="url(#glow)" stroke-width="1" opacity="0.5"/>
+  <line x1="32" y1="28" x2="40" y2="22" stroke="url(#glow)" stroke-width="1" opacity="0.5"/>
+  <line x1="32" y1="28" x2="24" y2="34" stroke="url(#glow)" stroke-width="1" opacity="0.5"/>
+  <line x1="32" y1="28" x2="40" y2="34" stroke="url(#glow)" stroke-width="1" opacity="0.5"/>
+  <line x1="32" y1="28" x2="32" y2="40" stroke="url(#glow)" stroke-width="1" opacity="0.5"/>
+  <line x1="24" y1="22" x2="18" y2="28" stroke="url(#glow)" stroke-width="1" opacity="0.4"/>
+  <line x1="40" y1="22" x2="46" y2="28" stroke="url(#glow)" stroke-width="1" opacity="0.4"/>
+  <line x1="24" y1="34" x2="18" y2="28" stroke="url(#glow)" stroke-width="1" opacity="0.4"/>
+  <line x1="40" y1="34" x2="46" y2="28" stroke="url(#glow)" stroke-width="1" opacity="0.4"/>
+  <line x1="24" y1="22" x2="40" y2="22" stroke="url(#glow)" stroke-width="0.8" opacity="0.3"/>
+  <line x1="24" y1="34" x2="40" y2="34" stroke="url(#glow)" stroke-width="0.8" opacity="0.3"/>
+  <!-- Center glow -->
+  <circle cx="32" cy="28" r="6" fill="url(#glow)" opacity="0.15"/>
+  <circle cx="32" cy="28" r="2" fill="#fff" opacity="0.9"/>
+</svg>

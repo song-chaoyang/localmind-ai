@@ -28,9 +28,10 @@ venv/
 .DS_Store
 Thumbs.db
 
-# OpenMind specific
-.openmind/
+# NexusMind specific
+.nexusmind/
 *.db
+*.sqlite
 *.log
 *.gguf
 *.bin
