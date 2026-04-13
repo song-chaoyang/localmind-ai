@@ -109,6 +109,17 @@ Specialized agents working together:
 
 <br clear="right"/>
 
+### Hybrid RAG 2.0 (Semantic + Lexical Fusion)
+
+NexusMind now uses a dual-retriever pipeline designed for production support and consulting workloads:
+
+- Semantic retrieval for conceptual similarity
+- BM25-style lexical retrieval for exact symbols (`ERR_AUTH_401`, API names, class names)
+- Reciprocal-rank fusion to combine both channels
+- Debug-friendly retrieval trace (`query_debug`) for observability
+
+This dramatically improves answer quality on real-world troubleshooting and architecture Q&A.
+
 ### Multi-Provider Support
 
 Connect to any LLM provider:

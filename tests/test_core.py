@@ -671,6 +671,23 @@ class TestRAG:
         stats = pipeline.get_stats()
         assert stats["documents_ingested"] == 2
         assert stats["store_size"] > 0
+        assert stats["lexical_store_size"] > 0
+
+    def test_rag_hybrid_retrieval_debug(self) -> None:
+        """Hybrid retrieval should include lexical and semantic debug metadata."""
+        from nexusmind.core.rag import RAGPipeline
+
+        pipeline = RAGPipeline(chunk_size=80, chunk_overlap=10)
+        pipeline.ingest_text("ERR_AUTH_401 happens when auth token expires", {"source": "logs.txt"})
+        pipeline.ingest_text("Authentication best practices in distributed systems", {"source": "guide.txt"})
+
+        debug_results = pipeline.query_debug("ERR_AUTH_401 auth token", top_k=3)
+        assert len(debug_results) > 0
+
+        top_result, debug = debug_results[0]
+        assert "auth" in top_result.document.content.lower() or "err_auth_401" in top_result.document.content.lower()
+        assert debug.fused_score > 0
+        assert debug.semantic_rank is not None or debug.lexical_rank is not None
 
 
 # ---------------------------------------------------------------------------
