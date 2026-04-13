@@ -10,6 +10,7 @@ import hashlib
 import logging
 import math
 import re
+from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterator, Optional
@@ -56,6 +57,17 @@ class SearchResult:
     document: Document
     score: float
     chunk_index: int = 0
+
+
+@dataclass
+class RetrievalDebugInfo:
+    """Debug information for hybrid retrieval ranking."""
+
+    semantic_rank: int | None = None
+    lexical_rank: int | None = None
+    semantic_score: float = 0.0
+    lexical_score: float = 0.0
+    fused_score: float = 0.0
 
 
 # ---------------------------------------------------------------------------
@@ -539,6 +551,101 @@ class VectorStore:
 
 
 # ---------------------------------------------------------------------------
+# Lexical Retriever (BM25-lite)
+# ---------------------------------------------------------------------------
+
+
+class LexicalStore:
+    """A lightweight BM25-style lexical retriever.
+
+    This complements vector search for keyword-heavy queries (error codes,
+    API names, exact class identifiers, etc.).
+    """
+
+    def __init__(self, k1: float = 1.5, b: float = 0.75) -> None:
+        self.k1 = k1
+        self.b = b
+        self._documents: dict[str, Document] = {}
+        self._doc_tokens: dict[str, list[str]] = {}
+        self._doc_term_freq: dict[str, Counter[str]] = {}
+        self._inverted_index: dict[str, set[str]] = {}
+        self._doc_lengths: dict[str, int] = {}
+
+    def add(self, document: Document) -> None:
+        """Index a document chunk for lexical retrieval."""
+        tokens = self._tokenize(document.content)
+        self._documents[document.id] = document
+        self._doc_tokens[document.id] = tokens
+        self._doc_term_freq[document.id] = Counter(tokens)
+        self._doc_lengths[document.id] = len(tokens)
+
+        for token in set(tokens):
+            self._inverted_index.setdefault(token, set()).add(document.id)
+
+    def add_many(self, documents: list[Document]) -> None:
+        for doc in documents:
+            self.add(doc)
+
+    def clear(self) -> None:
+        self._documents.clear()
+        self._doc_tokens.clear()
+        self._doc_term_freq.clear()
+        self._inverted_index.clear()
+        self._doc_lengths.clear()
+
+    def search(self, query: str, top_k: int = 5) -> list[SearchResult]:
+        """Search the lexical index using a BM25-style score."""
+        if not self._documents:
+            return []
+
+        query_tokens = self._tokenize(query)
+        if not query_tokens:
+            return []
+
+        candidate_ids: set[str] = set()
+        for token in query_tokens:
+            candidate_ids.update(self._inverted_index.get(token, set()))
+
+        if not candidate_ids:
+            return []
+
+        avg_doc_len = sum(self._doc_lengths.values()) / max(1, len(self._doc_lengths))
+        scores: dict[str, float] = {}
+
+        for doc_id in candidate_ids:
+            doc_score = 0.0
+            doc_tf = self._doc_term_freq[doc_id]
+            doc_len = self._doc_lengths[doc_id]
+
+            for token in query_tokens:
+                tf = doc_tf.get(token, 0)
+                if tf == 0:
+                    continue
+
+                df = len(self._inverted_index.get(token, ()))
+                idf = math.log(1 + (len(self._documents) - df + 0.5) / (df + 0.5))
+                denom = tf + self.k1 * (1 - self.b + self.b * (doc_len / max(1.0, avg_doc_len)))
+                doc_score += idf * ((tf * (self.k1 + 1)) / max(1e-9, denom))
+
+            if doc_score > 0:
+                scores[doc_id] = doc_score
+
+        ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_k]
+        return [
+            SearchResult(document=self._documents[doc_id], score=score)
+            for doc_id, score in ranked
+        ]
+
+    @property
+    def size(self) -> int:
+        return len(self._documents)
+
+    @staticmethod
+    def _tokenize(text: str) -> list[str]:
+        return re.findall(r"[a-zA-Z0-9_]+", text.lower())
+
+
+# ---------------------------------------------------------------------------
 # RAG Pipeline
 # ---------------------------------------------------------------------------
 
@@ -573,6 +680,7 @@ class RAGPipeline:
         self.splitter = TextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
         self.embedder = SimpleEmbedder(model_name=embedder_model)
         self.store = VectorStore(dimension=self.embedder.dimension)
+        self.lexical_store = LexicalStore()
         self._stats = {
             "documents_ingested": 0,
             "chunks_created": 0,
@@ -612,6 +720,7 @@ class RAGPipeline:
         for chunk, embedding in zip(chunks, embeddings):
             chunk.embedding = embedding
             self.store.add(chunk)
+            self.lexical_store.add(chunk)
 
         self._stats["documents_ingested"] += len(all_documents)
         self._stats["chunks_created"] += len(chunks)
@@ -640,6 +749,7 @@ class RAGPipeline:
         for chunk, embedding in zip(chunks, embeddings):
             chunk.embedding = embedding
             self.store.add(chunk)
+            self.lexical_store.add(chunk)
 
         self._stats["chunks_created"] += len(chunks)
         return len(chunks)
@@ -661,9 +771,73 @@ class RAGPipeline:
             List of SearchResult objects.
         """
         query_embedding = self.embedder.embed(query)
-        results = self.store.search(query_embedding, top_k=top_k, threshold=threshold)
+        semantic_results = self.store.search(query_embedding, top_k=top_k * 2, threshold=threshold)
+        lexical_results = self.lexical_store.search(query, top_k=top_k * 2)
+        results = self._fuse_results(semantic_results, lexical_results, top_k=top_k)
         self._stats["queries_performed"] += 1
         return results
+
+    def query_debug(
+        self,
+        query: str,
+        top_k: int = 5,
+        threshold: float = 0.0,
+    ) -> list[tuple[SearchResult, RetrievalDebugInfo]]:
+        """Query with retrieval diagnostics (semantic + lexical + fused scores)."""
+        query_embedding = self.embedder.embed(query)
+        semantic_results = self.store.search(query_embedding, top_k=top_k * 2, threshold=threshold)
+        lexical_results = self.lexical_store.search(query, top_k=top_k * 2)
+
+        fused = self._fuse_results(semantic_results, lexical_results, top_k=top_k)
+        semantic_index = {r.document.id: (idx, r.score) for idx, r in enumerate(semantic_results, 1)}
+        lexical_index = {r.document.id: (idx, r.score) for idx, r in enumerate(lexical_results, 1)}
+        fused_index = {r.document.id: r.score for r in fused}
+
+        output: list[tuple[SearchResult, RetrievalDebugInfo]] = []
+        for result in fused:
+            sem = semantic_index.get(result.document.id)
+            lex = lexical_index.get(result.document.id)
+            output.append(
+                (
+                    result,
+                    RetrievalDebugInfo(
+                        semantic_rank=sem[0] if sem else None,
+                        lexical_rank=lex[0] if lex else None,
+                        semantic_score=sem[1] if sem else 0.0,
+                        lexical_score=lex[1] if lex else 0.0,
+                        fused_score=fused_index.get(result.document.id, 0.0),
+                    ),
+                )
+            )
+        self._stats["queries_performed"] += 1
+        return output
+
+    def _fuse_results(
+        self,
+        semantic_results: list[SearchResult],
+        lexical_results: list[SearchResult],
+        top_k: int,
+    ) -> list[SearchResult]:
+        """Reciprocal-rank fusion over semantic and lexical retrieval."""
+        scores: dict[str, float] = {}
+        docs: dict[str, Document] = {}
+        k = 60.0
+
+        for rank, result in enumerate(semantic_results, 1):
+            doc_id = result.document.id
+            docs[doc_id] = result.document
+            scores[doc_id] = scores.get(doc_id, 0.0) + (1.0 / (k + rank))
+
+        for rank, result in enumerate(lexical_results, 1):
+            doc_id = result.document.id
+            docs[doc_id] = result.document
+            scores[doc_id] = scores.get(doc_id, 0.0) + (1.0 / (k + rank))
+
+        ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_k]
+        return [
+            SearchResult(document=docs[doc_id], score=fused_score)
+            for doc_id, fused_score in ranked
+        ]
 
     def build_context(self, query: str, max_tokens: int = 2000) -> str:
         """Build a context string from relevant documents.
@@ -700,6 +874,7 @@ class RAGPipeline:
         return {
             **self._stats,
             "store_size": self.store.size,
+            "lexical_store_size": self.lexical_store.size,
             "embedding_dimension": self.embedder.dimension,
             "using_transformers": self.embedder._use_transformers,
         }
